@@ -9,7 +9,7 @@ export class FullscreenDirective {
   constructor(private el: ElementRef) {}
 
   private setHeight() {
-    this.el.nativeElement.style.height = `${window.innerHeight}px`;
+    this.el.nativeElement.style.minHeight = `${window.innerHeight}px`;
   }
 
   ngOnInit() {

@@ -1,59 +1,52 @@
-<div
-  class="max-w-lg  p-6 space-y-6 bg-gradient-to-br from-white to-gray-50 shadow-xl rounded-2xl border border-gray-100 m-4"
->
-  <div *ngIf="isNew" class="p-4 bg-green-100 border border-green-300 rounded-xl text-center">
-    <h2 class="text-lg font-semibold text-green-700">
-      🎉 Your appointment was booked successfully!
-    </h2>
+<div appFullscreen class="container">
+  <div class="appointment-card">
+    <div *ngIf="isNew" class="appointment-success animate-bounce">
+      <h2>🎉 Your appointment was booked successfully!</h2>
+    </div>
+
+    <h1 class="appointment-title">📌 Appointment Details</h1>
+
+    <div class="appointment-section">
+      <label>Service</label>
+      <p>
+        {{ appointment?.service?.name }} ({{
+          appointment?.service?.duration
+        }}
+        min)
+      </p>
+    </div>
+
+    <div class="appointment-section">
+      <label>Client</label>
+      <p>
+        {{ appointment?.client?.name }} - {{ appointment?.client?.phone }}
+        <br />
+        <span>{{ appointment?.client?.email }}</span>
+      </p>
+    </div>
+
+    <div class="appointment-section">
+      <label>Date & Time</label>
+      <p>
+        {{ appointment?.startTime | date : "fullDate" }} <br />
+        {{ appointment?.startTime | date : "shortTime" }} -
+        {{ appointment?.endTime | date : "shortTime" }}
+      </p>
+    </div>
+
+    <div class="appointment-section">
+      <label>Location</label>
+      <p>
+        {{ appointment?.agenda?.business?.name }} <br />
+        <span>{{ appointment?.agenda?.business?.address }}</span>
+      </p>
+    </div>
+
+    <div class="appointment-section">
+      <label>Price</label>
+      <p>${{ appointment?.service?.price }}</p>
+    </div>
+
+    <button class="appointment-back" (click)="goBack()">Back</button>
   </div>
-
-  <h1 class="text-2xl font-bold text-gray-800 text-center">
-    📌 Appointment Details
-  </h1>
-
-  <div class="space-y-1">
-    <label class="block text-sm font-semibold text-gray-700">Service</label>
-    <p class="text-gray-800 bg-white border border-gray-200 rounded-xl p-3 shadow-sm">
-      {{ appointment?.service?.name }} ({{ appointment?.service?.duration }} min)
-    </p>
-  </div>
-
-  <div class="space-y-1">
-    <label class="block text-sm font-semibold text-gray-700">Client</label>
-    <p class="text-gray-800 bg-white border border-gray-200 rounded-xl p-3 shadow-sm">
-      {{ appointment?.client?.name }} - {{ appointment?.client?.phone }}
-      <br />
-      <span class="text-sm text-gray-500">{{ appointment?.client?.email }}</span>
-    </p>
-  </div>
-
-  <div class="space-y-1">
-    <label class="block text-sm font-semibold text-gray-700">Date & Time</label>
-    <p class="text-gray-800 bg-white border border-gray-200 rounded-xl p-3 shadow-sm">
-      {{ appointment?.startTime | date:'fullDate' }} <br />
-      {{ appointment?.startTime | date:'shortTime' }} - {{ appointment?.endTime | date:'shortTime' }}
-    </p>
-  </div>
-
-  <div class="space-y-1">
-    <label class="block text-sm font-semibold text-gray-700">Location</label>
-    <p class="text-gray-800 bg-white border border-gray-200 rounded-xl p-3 shadow-sm">
-      {{ appointment?.agenda?.business?.name }} <br />
-      <span class="text-sm text-gray-500">{{ appointment?.agenda?.business?.address }}</span>
-    </p>
-  </div>
-
-  <div class="space-y-1">
-    <label class="block text-sm font-semibold text-gray-700">Price</label>
-    <p class="text-gray-800 bg-white border border-gray-200 rounded-xl p-3 shadow-sm">
-      ${{ appointment?.service?.price }}
-    </p>
-  </div>
-
-  <button
-    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl shadow-lg transition duration-200"
-    (click)="goBack()"
-  >
-    ⬅ Back
-  </button>
 </div>

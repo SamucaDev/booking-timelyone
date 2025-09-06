@@ -51,4 +51,8 @@ export class AppointmentService {
   getAppointmentById(appointmentId: number): Observable<Appointment> {
     return this.http.get<Appointment>(`${this.baseUrl}/${appointmentId}`);
   }
+
+  getAgendaDetail(agendaId: number): Observable<Appointment> {
+    return this.http.get<Appointment>(`${this.baseUrl}/detail/${agendaId}`);
+  }
 }

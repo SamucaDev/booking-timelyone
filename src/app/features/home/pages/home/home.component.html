@@ -1,9 +1,40 @@
 <div>
-  <div appFullscreen id="principal" >
+  <div appFullscreen id="principal">
     <div class="text-box">
-      <h1 class="title">{{ agenda?.business?.name || ''}}</h1>
+      <h1 class="title">{{ agenda?.business?.name }}</h1>
+    </div>
+    <button (click)="goToAppointment()" class="button-book">Book now</button>
+  </div>
+
+  <div class="store-information">
+    <div class="section contact" *ngIf="agenda?.business">
+      <h2>Contact</h2>
+      <p><strong>Phone:</strong> {{ agenda.business.user.phone }}</p>
+      <p><strong>Email:</strong> {{ agenda.business.user.email }}</p>
     </div>
 
-    <button (click)="goToAppointment()" class="button-book">Book now</button>
+    <div class="section address" *ngIf="agenda?.business?.address">
+      <h2>Address</h2>
+      <p>{{ agenda.business.address }}</p>
+    </div>
+
+    <div class="section hours" *ngIf="agenda?.openingHours?.length">
+      <h2>Opening Hours</h2>
+      <ul class="hours-list">
+        <li *ngFor="let h of agenda.openingHours">
+          <span>{{ getDayName(h.day) }}</span>
+          <span>{{ h.hours }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section services" *ngIf="agenda?.business?.Service?.length">
+      <h2>All Services</h2>
+      <ul>
+        <li *ngFor="let s of agenda.business.Service">
+          {{ s.name }} - €{{ s.price }} - {{ s.duration }} min
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Appointment, AppointmentService } from '../../../../services/appointment/appointment.service';
 import { CommonModule, DatePipe } from '@angular/common';
+import { FullscreenDirective } from '../../../../directive/fullscreen.directive';
 
 @Component({
   selector: 'app-appointment-detail',
   standalone: true,
-  imports: [DatePipe, CommonModule],
+  imports: [DatePipe, CommonModule, FullscreenDirective],
   templateUrl: './appointment-detail.component.html',
   styleUrl: './appointment-detail.component.scss'
 })
@@ -36,7 +37,6 @@ export class AppointmentDetailComponent {
       error: (err) => console.error('Err:', err),
     });
     this.isNew = this.route.snapshot.queryParamMap.get('isNew') === 'true';
-
   }
 
   goBack() { 

@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FullscreenDirective } from '../../../../directive/fullscreen.directive';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Agenda, AgendaService } from '../../../../services/agenda/agenda.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FullscreenDirective],
+  imports: [FullscreenDirective, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -14,7 +15,7 @@ export class HomeComponent {
   businessId!: string;
   agendaId!: string;
   barberId!: string;
-  agenda?: Agenda;
+  agenda?: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,4 +37,13 @@ export class HomeComponent {
   goToAppointment (): void {  
     this.router.navigate([`/${this.businessId}/${this.agendaId}/${this.barberId}/appointment`]);
   }
+
+  getDayName(day: number): string {
+    const days = [
+      'Sunday', 'Monday', 'Tuesday',
+      'Wednesday', 'Thursday', 'Friday', 'Saturday'
+    ];
+    return days[day] || '';
+  }
+  
 }

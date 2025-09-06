@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxMaskDirective } from 'ngx-mask';
+import { FullscreenDirective } from '../../../../directive/fullscreen.directive';
 
 @Component({
   selector: 'app-create-appointment',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgxMaskDirective],
+  imports: [CommonModule, FormsModule, NgxMaskDirective, FullscreenDirective],
   templateUrl: './create-appointment.component.html',
   styleUrls: ['./create-appointment.component.scss'],
 })
@@ -27,6 +28,7 @@ export class CreateAppointmentComponent implements OnInit {
   appointmentId!: string;
   barberId?: string
 
+  today: string = new Date().toISOString().split('T')[0];
   
   constructor(
     private route: ActivatedRoute, private http: HttpClient, private router: Router) {}

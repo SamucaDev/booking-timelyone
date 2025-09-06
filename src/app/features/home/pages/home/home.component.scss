@@ -32,3 +32,46 @@
   box-shadow: 0 4px 8px rgba(222, 200, 200, 0.2);
   border-radius: 16px;
 }
+
+.section {
+  margin: 20px 0;
+  padding: 15px 32px;
+  border-radius: 10px;
+  background: #f9f9f9;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.section p, 
+.section li {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.hours-list {
+  list-style: none;
+  padding: 0;
+}
+
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed #ccc;
+  padding: 5px 0;
+}
+
+.hours-list li span:first-child {
+  font-weight: 500;
+}
+
+.store-information { 
+  padding: 1rem;
+  background-color: #dbe9fe;
+}
