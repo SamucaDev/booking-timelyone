@@ -79,11 +79,9 @@ export class CreateAppointmentComponent implements OnInit {
       return;
     }
   
-    // Calcula o horário de início em UTC
     const localDateTime = new Date(`${this.selectedDate}T${this.selectedSlot}:00`);
     const appointmentDateTime = new Date(localDateTime.toISOString());
   
-    // Calcula o horário de fim em UTC
     const endTime = new Date(
       appointmentDateTime.getTime() + this.selectedService.duration * 60000
     );
@@ -91,8 +89,8 @@ export class CreateAppointmentComponent implements OnInit {
     this.http
       .post('http://localhost:8000/appointment', {
         agendaId: Number(this.agendaId),
-        startTime: appointmentDateTime.toISOString(), // UTC
-        endTime: endTime.toISOString(), // UTC
+        startTime: appointmentDateTime.toISOString(), 
+        endTime: endTime.toISOString(), 
         employeeId: this.selectedService.userId,
         serviceId: this.selectedService.id,
         client: {
@@ -103,7 +101,6 @@ export class CreateAppointmentComponent implements OnInit {
       })
       .subscribe({
         next: (response: any) => {
-          // Limpa os campos
           this.selectedSlot = '';
           this.clientName = '';
           this.clientEmail = '';
@@ -118,6 +115,12 @@ export class CreateAppointmentComponent implements OnInit {
           alert('Error creating appointment!');
         },
       });
+  }
+
+  goBack() {
+    this.router.navigate(
+      [`/${this.businessId}/${this.agendaId}/${this.barberId}/`],
+    );
   }
   
 }

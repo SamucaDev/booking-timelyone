@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-// Interfaces baseadas no schema do Prisma
 export interface AppointmentClient {
   id: number;
   name: string;
@@ -32,8 +31,8 @@ export interface ServiceProvided {
 
 export interface Appointment {
   id: number;
-  startTime: string; // DateTime -> string ISO
-  endTime: string;   // DateTime -> string ISO
+  startTime: string; 
+  endTime: string;  
   createdAt: string;
   client?: AppointmentClient;
   service: ServiceProvided;

@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { FullscreenDirective } from '../../../../directive/fullscreen.directive';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Agenda, AgendaService } from '../../../../services/agenda/agenda.service';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FullscreenDirective } from '../../../../directive/fullscreen.directive';
+import { AgendaService } from '../../../../services/agenda/agenda.service';
 
 @Component({
   selector: 'app-home',

@@ -4,6 +4,8 @@
   justify-content: center;
   align-items: center;
   background-color: #dbe9fe;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .appointment-form {
@@ -100,6 +102,14 @@
 
     &:hover {
       background: #1d4ed8;
+    }
+  }
+
+  &.btn-secondary {
+    background: #6b7280;
+
+    &:hover {
+      background: #4b5563;
     }
   }
 
