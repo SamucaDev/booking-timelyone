@@ -2,7 +2,6 @@
   <div class="appointment-form">
     <h1 class="form-title">📅 New Appointment</h1>
 
-    <!-- Service -->
     <div class="form-group">
       <label>Service</label>
       <select
@@ -16,7 +15,6 @@
       </select>
     </div>
 
-    <!-- Date -->
     <div class="form-group">
       <label>Date</label>
       <input
@@ -30,7 +28,6 @@
       </button>
     </div>
 
-    <!-- Slots -->
     <div *ngIf="slots != null" class="form-group">
       <label>Available Slots</label>
       <div class="slots-grid" *ngIf="slots.length > 0">
@@ -46,7 +43,6 @@
         No available slots for the selected date.
       </div>
 
-      <!-- Client details -->
       <div *ngIf="selectedSlot" class="form-client">
         <h2>👤 Client Information</h2>
 

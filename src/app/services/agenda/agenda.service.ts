@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import { environment } from 'src/environments/environment'; // ajuste se necessário
 
-// Interfaces para tipar a resposta da API
 export interface Hour {
   id: number;
   start: string;
