@@ -7,7 +7,7 @@
       <label>Service</label>
       <select
         [(ngModel)]="selectedService"
-        (change)="slots = []; selectedSlot = ''"
+        (change)="slots = null; selectedSlot = ''"
       >
         <option [ngValue]="null">Select a service...</option>
         <option *ngFor="let service of services" [ngValue]="service">
@@ -23,7 +23,7 @@
         type="date"
         [min]="today"
         [(ngModel)]="selectedDate"
-        (change)="slots = []; selectedSlot = ''"
+        (change)="slots = null; selectedSlot = ''"
       />
       <button class="btn btn-primary" (click)="fetchSlots()">
         Load Available Slots
@@ -31,9 +31,9 @@
     </div>
 
     <!-- Slots -->
-    <div *ngIf="slots.length > 0" class="form-group">
+    <div *ngIf="slots != null" class="form-group">
       <label>Available Slots</label>
-      <div class="slots-grid">
+      <div class="slots-grid" *ngIf="slots.length > 0">
         <button
           *ngFor="let slot of slots"
           (click)="selectedSlot = slot"
@@ -42,38 +42,30 @@
           {{ slot }}
         </button>
       </div>
-    </div>
+      <div *ngIf="slots.length === 0" class="no-slots">
+        No available slots for the selected date.
+      </div>
 
-    <!-- Client details -->
-    <div *ngIf="selectedSlot" class="form-client">
-      <h2>👤 Client Information</h2>
+      <!-- Client details -->
+      <div *ngIf="selectedSlot" class="form-client">
+        <h2>👤 Client Information</h2>
 
-      <input
-        type="text"
-        placeholder="Full name"
-        [(ngModel)]="clientName"
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        [(ngModel)]="clientEmail"
-      />
-      <input
-        type="tel"
-        [(ngModel)]="clientPhone"
-        mask="+000 00 000 0000"
-        placeholder="+353 87 123 4567"
-      />
+        <input type="text" placeholder="Full name" [(ngModel)]="clientName" />
+        <input type="email" placeholder="Email" [(ngModel)]="clientEmail" />
+        <input
+          type="tel"
+          [(ngModel)]="clientPhone"
+          mask="+000 00 000 0000"
+          placeholder="+353 87 123 4567"
+        />
 
-      <button class="btn btn-success" (click)="confirmAppointment()">
-        Confirm Appointment
-      </button>
+        <button class="btn btn-success" (click)="confirmAppointment()">
+          Confirm Appointment
+        </button>
+      </div>
     </div>
   </div>
-
   <div class="appointment-form">
-    <button class="btn btn-secondary" (click)="goBack()">
-      Back
-    </button>
+    <button class="btn btn-secondary" (click)="goBack()">Back</button>
   </div>
 </div>

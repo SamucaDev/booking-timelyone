@@ -17,7 +17,7 @@ export class CreateAppointmentComponent implements OnInit {
   services: any[] = [];
   selectedService: any = null;
   selectedDate: string = '';
-  slots: string[] = [];
+  slots: string[] | null = null;
   selectedSlot: string = '';
   clientName: string = '';
   clientEmail: string = '';
